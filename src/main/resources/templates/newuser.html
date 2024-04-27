@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Form</title>
+	   <link rel="stylesheet" type="text/css" th:href="@{/css/estilos3.css}" />
+</head>
+<body>
+	
+	<div class="navbar">
+	    <a th:href="@{/pokes}" th:if="${session['username'] != null}">Pokedex</a>
+	    <a th:href="@{/newuser}" th:if="${session['username'] == null}">Login</a>
+	    <a th:href="@{/users}"th:if="${session['username'] != null}">Usuario</a>
+		<a th:href="@{/logout}">Logout</a>
+		<a th:href="@{/chatonline}">Chat</a>
+	</div>
+	
+	   
+	<div th:if="${session['username'] == null}">
+	    <form th:action="@{/login}" method="post">
+	        <div>
+	            <label for="username">Username:</label>
+	            <input type="text" name="username" />
+	        </div>
+	        <div>
+	            <label for="password">Password:</label>
+	            <input type="password" name="password" />
+	        </div>
+	        <button type="submit">Login</button>
+	    </form>
+	</div>
+	
+	<div th:if="${session['username'] != null}">
+	    <a th:href="@{/logout}">Logout</a>
+	</div>
+
+   <p th:if="${error}" style="color: red;" th:text="${error}"></p>
+
+</body>
+</html>
