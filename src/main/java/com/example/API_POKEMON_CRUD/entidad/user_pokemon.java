@@ -13,14 +13,14 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Builder;
-@Builder
+
 @Entity
 @Table(name="user_pokemon",uniqueConstraints = @UniqueConstraint(columnNames="email"))
 public class user_pokemon {
@@ -40,7 +40,7 @@ public class user_pokemon {
 		this.email = email;
 	}
 
-	public user_pokemon(Long id, String nombre, String contrasena, String email, List<pokemons> pokemons_usuarios) {
+	public user_pokemon(Long id, String nombre, String contrasena, String email, Set<pokemons> pokemons_usuarios) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -76,9 +76,11 @@ public class user_pokemon {
 
 	@ManyToMany(fetch=FetchType.EAGER, cascade=CascadeType.MERGE)
 	@JoinTable(
-			name="user_pokemon_caught" , joinColumns= @JoinColumn(name="user_pokemon_id", referencedColumnName="id"), inverseJoinColumns=@JoinColumn(name="pokemon_id", referencedColumnName="id")
+			name="user_pokemon_caught" ,
+			joinColumns= @JoinColumn(name="user_pokemon_id", referencedColumnName="id"), 
+			inverseJoinColumns=@JoinColumn(name="pokemon_id", referencedColumnName="id")
 			)
-	private List<pokemons> pokemons_usuarios;
+	private Set<pokemons> pokemons_usuarios;
 	
 	 @ManyToMany(fetch=FetchType.EAGER,targetEntity= users_Roles.class ,cascade=CascadeType.PERSIST)
 	    @JoinTable(
@@ -87,6 +89,10 @@ public class user_pokemon {
 	        inverseJoinColumns=@JoinColumn(name="roles_id")
 	    )
 	    private Set<users_Roles> roles;
+	    
+	    @OneToMany(mappedBy = "userPokemon")
+	    private List<UserPokemonCaught> caughtPokemons;
+
 	
 	
 	public user_pokemon() {
@@ -126,13 +132,7 @@ public class user_pokemon {
 		this.email = email;
 	}
 
-	public List<pokemons> getPokemons_usuarios() {
-		return pokemons_usuarios;
-	}
 
-	public void setPokemons_usuarios(List<pokemons> pokemons_usuarios) {
-		this.pokemons_usuarios = pokemons_usuarios;
-	}
 
 	public Set<users_Roles> getRoles() {
 		return roles;
@@ -140,6 +140,22 @@ public class user_pokemon {
 
 	public void setRoles(Set<users_Roles> roles) {
 		this.roles = roles;
+	}
+
+	public Set<pokemons> getPokemons_usuarios() {
+		return pokemons_usuarios;
+	}
+
+	public void setPokemons_usuarios(Set<pokemons> pokemons_usuarios) {
+		this.pokemons_usuarios = pokemons_usuarios;
+	}
+
+	public List<UserPokemonCaught> getCaughtPokemons() {
+		return caughtPokemons;
+	}
+
+	public void setCaughtPokemons(List<UserPokemonCaught> caughtPokemons) {
+		this.caughtPokemons = caughtPokemons;
 	}
 
 

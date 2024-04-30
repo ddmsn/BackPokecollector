@@ -10,6 +10,8 @@ import org.springframework.stereotype.Repository;
 
 import com.example.API_POKEMON_CRUD.entidad.user_pokemon;
 
+import jakarta.transaction.Transactional;
+
 @Repository
 public interface users_Repository extends JpaRepository<user_pokemon, Long> {
 
@@ -33,6 +35,10 @@ public interface users_Repository extends JpaRepository<user_pokemon, Long> {
              "WHERE u.nombre = :username",
      nativeQuery = true)
     List<String> findUsersWithCaughtPokemons(@Param("username") String username);
+	 
+	 @Transactional
+	    @Query("SELECT u.id FROM user_pokemon u WHERE u.nombre = :nombre")
+	    Long findIdByNombre(@Param("nombre") String nombre);
 	 
 	
 }

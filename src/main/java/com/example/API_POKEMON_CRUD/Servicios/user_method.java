@@ -18,6 +18,14 @@ public interface user_method {
    public List<String> userswithPokemons(String username);
    
    public user_pokemon guardar(user_pokemon_register user_pokemon_register);
+   
+   public void insertPokemonCaught(Long pokemonId, Long userPokemonId);
+   
+   public Long findUserIdByNombre(String nombre);
+   
+   public void deleteCaughtPokemon(Long pokemonId, Long userPokemonId);
+ 
+
 
 	
 	

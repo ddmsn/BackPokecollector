@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,18 +19,25 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
 import com.example.API_POKEMON_CRUD.entidad.user_pokemon;
 import com.example.API_POKEMON_CRUD.jasonwebtoken.JwtUtils;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.example.API_POKEMON_CRUD.Servicios.UserDetailsServiceImpl;
 import java.util.HashMap;
 import java.util.Map;
 import com.example.API_POKEMON_CRUD.FTO.user_pokemon_register;
+import com.example.API_POKEMON_CRUD.Repository.UserPokemonCaughtRepository;
 import com.example.API_POKEMON_CRUD.Servicios.pokemon_methods;
 import com.example.API_POKEMON_CRUD.Servicios.user_method;
+import com.example.API_POKEMON_CRUD.entidad.AddPokemonRequest;
+import com.example.API_POKEMON_CRUD.entidad.FindUserIdRequest;
 import com.example.API_POKEMON_CRUD.entidad.pokemons;
 
 @RestController
 @RequestMapping("/api")
 @CrossOrigin(origins = "http://localhost:4200/")
 public class restcontrollerapi {
+	
+	@Autowired
+	private UserPokemonCaughtRepository userPokemonCaught;
 
 	@Autowired
 	private user_method servicio_user;
@@ -87,9 +95,48 @@ public class restcontrollerapi {
 
 	@GetMapping("/users/pokemons")
 	public ResponseEntity<List<String>> getUsersWithPokemons(@RequestParam String username) {
-	    List<String> caughtPokemons = servicio_user.userswithPokemons(username);
-	    return new ResponseEntity<>(caughtPokemons, HttpStatus.OK);
+		List<String> caughtPokemons = servicio_user.userswithPokemons(username);
+		return new ResponseEntity<>(caughtPokemons, HttpStatus.OK);
 	}
 
+	@PostMapping("/add-pokemon")
+	public ResponseEntity<String> addPokemonToUser(@RequestBody AddPokemonRequest request) {
+	    try {
+	        if (userPokemonCaught.existsByUserPokemonIdAndPokemonId(request.getUserPokemonId(), request.getPokemonId())) {
+	            return ResponseEntity.badRequest().body("El usuario ya tiene este Pokémon.");
+	        }
 
+	        servicio_user.insertPokemonCaught(request.getPokemonId(), request.getUserPokemonId());
+	        
+	        Map<String, String> successResponse = new HashMap<>();
+	        successResponse.put("message", "Pokémon añadido exitosamente.");
+
+	        ObjectMapper objectMapper = new ObjectMapper();
+	        String successJson = objectMapper.writeValueAsString(successResponse);
+
+	        return ResponseEntity.ok(successJson);
+	    } catch (Exception e) {
+	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al añadir el Pokémon al usuario");
+	    }
+	}
+
+	 @PostMapping("/find-id")
+	    public ResponseEntity<Long> findUserIdByNombre(@RequestBody FindUserIdRequest request) {
+	        Long userId = servicio_user.findUserIdByNombre(request.getNombre());
+	        if (userId != null) {
+	            return ResponseEntity.ok(userId);
+	        } else {
+	            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+	        }
+	    }
+	 
+	 @DeleteMapping("/deletepokemon")
+	    public ResponseEntity<?> deleteCaughtPokemon(@RequestBody AddPokemonRequest deleteRequest) {
+	        Long pokemonId = deleteRequest.getPokemonId();
+	        Long userPokemonId = deleteRequest.getUserPokemonId();
+	        servicio_user.deleteCaughtPokemon(pokemonId, userPokemonId);
+	        return ResponseEntity.ok().build();
+	    }
+	
+	 
 }

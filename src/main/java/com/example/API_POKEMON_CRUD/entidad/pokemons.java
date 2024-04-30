@@ -1,6 +1,7 @@
 package com.example.API_POKEMON_CRUD.entidad;
 
 import java.util.List;
+import java.util.Objects;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -206,5 +207,19 @@ public class pokemons {
 	public void setVel(int vel) {
 		this.vel = vel;
 	}
+
+	@Override
+	public boolean equals(Object o) {
+	    if (this == o) return true;
+	    if (o == null || getClass() != o.getClass()) return false;
+	    pokemons pokemon = (pokemons) o;
+	    return Objects.equals(nombre, pokemon.nombre);
+	}
+
+	@Override
+	public int hashCode() {
+	    return Objects.hash(nombre);
+	}
+
 
 }

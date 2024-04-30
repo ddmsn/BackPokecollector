@@ -11,6 +11,7 @@ import com.example.API_POKEMON_CRUD.Repository.users_Repository;
 import com.example.API_POKEMON_CRUD.entidad.ERole;
 import com.example.API_POKEMON_CRUD.entidad.user_pokemon;
 import com.example.API_POKEMON_CRUD.entidad.users_Roles;
+import com.example.API_POKEMON_CRUD.Repository.UserPokemonCaughtRepository;
 import com.example.API_POKEMON_CRUD.Repository.roles_Repository;
 
 @Service
@@ -18,6 +19,9 @@ public class use_user_methods implements user_method{
 
 	@Autowired
 	private users_Repository repository;
+	
+	 @Autowired
+	    private UserPokemonCaughtRepository userPokemonCaughtRepository;
 	
 	@Autowired
 	private roles_Repository roles_Repository;
@@ -71,6 +75,20 @@ public class use_user_methods implements user_method{
 	    Optional<user_pokemon> optionalUserPokemon = repository.findByNombre(nombre);
 	    return optionalUserPokemon.orElse(null); // Retorna null si el Optional está vacío
 	}
+	
+	 public void insertPokemonCaught(Long pokemonId, Long userPokemonId) {
+	        userPokemonCaughtRepository.insertPokemonCaught(pokemonId, userPokemonId);
+	    }
+	 
+	 public Long findUserIdByNombre(String nombre) {
+	        return repository.findIdByNombre(nombre);
+	    }
+
+	@Override
+	public void deleteCaughtPokemon(Long pokemonId, Long userPokemonId) {
+		 userPokemonCaughtRepository.deleteByPokemonIdAndUserPokemonId(pokemonId, userPokemonId);
+	}
+	
 
 
 

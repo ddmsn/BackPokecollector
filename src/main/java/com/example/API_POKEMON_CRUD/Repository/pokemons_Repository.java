@@ -16,5 +16,7 @@ public interface pokemons_Repository extends JpaRepository<pokemons,Long> {
              "JOIN user_pokemon_caught upc ON p.id = upc.pokemon_id",
      nativeQuery = true)
 List<pokemons>Pokemonscaught();
+
+	
 		
 }
