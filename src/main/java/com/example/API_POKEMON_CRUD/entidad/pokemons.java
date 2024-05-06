@@ -3,13 +3,7 @@ package com.example.API_POKEMON_CRUD.entidad;
 import java.util.List;
 import java.util.Objects;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name="pokemons")
@@ -55,6 +49,22 @@ public class pokemons {
 	
 	@ManyToMany(mappedBy="pokemons_usuarios")
 	private List<user_pokemon> users;
+
+	@ManyToOne
+	@JoinColumn(name = "movimiento1_id")
+	private Movimiento movimiento1;
+
+	@ManyToOne
+	@JoinColumn(name = "movimiento2_id")
+	private Movimiento movimiento2;
+
+	@ManyToOne
+	@JoinColumn(name = "movimiento3_id")
+	private Movimiento movimiento3;
+
+	@ManyToOne
+	@JoinColumn(name = "movimiento4_id")
+	private Movimiento movimiento4;
 	
 	public pokemons(Long id, String num_pokedex, String nombre, String tipo, String rareza, boolean caught, int hp,
 			int atk, int atk_esp, int def, int def_esp, int vel,
