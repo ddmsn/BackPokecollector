@@ -150,12 +150,12 @@ FROM (SELECT id FROM movimientos ORDER BY RAND() LIMIT 4) AS movIDs join movimie
 
 -- Pikachu
 INSERT INTO pokemons (num_pokedex, nombre, tipo, rareza, caught, hp, atk, atk_esp, def, def_esp, vel,movimiento1_id,movimiento2_id,movimiento3_id,movimiento4_id)
-SELECT '0025', 'Pikachu', 'Eléctrico', 'common', false, 35, 55, 50, 40, 50, 90,m1.id, m2.id, m3.id, m4.id
+SELECT '0025', 'Pikachu', 'Electrico', 'common', false, 35, 55, 50, 40, 50, 90,m1.id, m2.id, m3.id, m4.id
 FROM (SELECT id FROM movimientos ORDER BY RAND() LIMIT 4) AS movIDs join movimientos m1 on movIDs.id = m1.id join movimientos m2 on m2.id != movIDs.id join movimientos m3 on m3.id != m2.id and m3.id != m1.id join movimientos m4 on m4.id != m3.id and m4.id != m2.id and m4.id != m1.id order by rand() limit 1;
 
 -- Raichu
 INSERT INTO pokemons (num_pokedex, nombre, tipo, rareza, caught, hp, atk, atk_esp, def, def_esp, vel,movimiento1_id,movimiento2_id,movimiento3_id,movimiento4_id)
-SELECT '0026', 'Raichu', 'Eléctrico', 'uncommun', false, 60, 90, 85, 55, 80, 110,m1.id, m2.id, m3.id, m4.id
+SELECT '0026', 'Raichu', 'Electrico', 'uncommun', false, 60, 90, 85, 55, 80, 110,m1.id, m2.id, m3.id, m4.id
 FROM (SELECT id FROM movimientos ORDER BY RAND() LIMIT 4) AS movIDs join movimientos m1 on movIDs.id = m1.id join movimientos m2 on m2.id != movIDs.id join movimientos m3 on m3.id != m2.id and m3.id != m1.id join movimientos m4 on m4.id != m3.id and m4.id != m2.id and m4.id != m1.id order by rand() limit 1;
 
 -- Sandshrew
@@ -340,17 +340,17 @@ FROM (SELECT id FROM movimientos ORDER BY RAND() LIMIT 4) AS movIDs join movimie
 
 -- Abra
 INSERT INTO pokemons (num_pokedex, nombre, tipo, rareza, caught, hp, atk, atk_esp, def, def_esp, vel,movimiento1_id,movimiento2_id,movimiento3_id,movimiento4_id)
-SELECT '0063', 'Abra', 'Psíquico', 'common', false, 25, 20, 105, 55, 85, 90,m1.id, m2.id, m3.id, m4.id
+SELECT '0063', 'Abra', 'Psiquico', 'common', false, 25, 20, 105, 55, 85, 90,m1.id, m2.id, m3.id, m4.id
 FROM (SELECT id FROM movimientos ORDER BY RAND() LIMIT 4) AS movIDs join movimientos m1 on movIDs.id = m1.id join movimientos m2 on m2.id != movIDs.id join movimientos m3 on m3.id != m2.id and m3.id != m1.id join movimientos m4 on m4.id != m3.id and m4.id != m2.id and m4.id != m1.id order by rand() limit 1;
 
 -- Kadabra
 INSERT INTO pokemons (num_pokedex, nombre, tipo, rareza, caught, hp, atk, atk_esp, def, def_esp, vel,movimiento1_id,movimiento2_id,movimiento3_id,movimiento4_id)
-SELECT '0064', 'Kadabra', 'Psíquico', 'uncommun', false, 40, 35, 120, 70, 85, 105,m1.id, m2.id, m3.id, m4.id
+SELECT '0064', 'Kadabra', 'Psiquico', 'uncommun', false, 40, 35, 120, 70, 85, 105,m1.id, m2.id, m3.id, m4.id
 FROM (SELECT id FROM movimientos ORDER BY RAND() LIMIT 4) AS movIDs join movimientos m1 on movIDs.id = m1.id join movimientos m2 on m2.id != movIDs.id join movimientos m3 on m3.id != m2.id and m3.id != m1.id join movimientos m4 on m4.id != m3.id and m4.id != m2.id and m4.id != m1.id order by rand() limit 1;
 
 -- Alakazam
 INSERT INTO pokemons (num_pokedex, nombre, tipo, rareza, caught, hp, atk, atk_esp, def, def_esp, vel,movimiento1_id,movimiento2_id,movimiento3_id,movimiento4_id)
-SELECT '0065', 'Alakazam', 'Psíquico', 'rare', false, 55, 50, 135, 85, 95, 120,m1.id, m2.id, m3.id, m4.id
+SELECT '0065', 'Alakazam', 'Psiquico', 'rare', false, 55, 50, 135, 85, 95, 120,m1.id, m2.id, m3.id, m4.id
 FROM (SELECT id FROM movimientos ORDER BY RAND() LIMIT 4) AS movIDs join movimientos m1 on movIDs.id = m1.id join movimientos m2 on m2.id != movIDs.id join movimientos m3 on m3.id != m2.id and m3.id != m1.id join movimientos m4 on m4.id != m3.id and m4.id != m2.id and m4.id != m1.id order by rand() limit 1;
 
 -- Machop
@@ -420,22 +420,22 @@ FROM (SELECT id FROM movimientos ORDER BY RAND() LIMIT 4) AS movIDs join movimie
 
 -- Slowpoke
 INSERT INTO pokemons (num_pokedex, nombre, tipo, rareza, caught, hp, atk, atk_esp, def, def_esp, vel,movimiento1_id,movimiento2_id,movimiento3_id,movimiento4_id)
-SELECT '0079', 'Slowpoke', 'Agua/Psíquico', 'uncommun', false, 90, 65, 40, 40, 40, 15,m1.id, m2.id, m3.id, m4.id
+SELECT '0079', 'Slowpoke', 'Agua/Psiquico', 'uncommun', false, 90, 65, 40, 40, 40, 15,m1.id, m2.id, m3.id, m4.id
 FROM (SELECT id FROM movimientos ORDER BY RAND() LIMIT 4) AS movIDs join movimientos m1 on movIDs.id = m1.id join movimientos m2 on m2.id != movIDs.id join movimientos m3 on m3.id != m2.id and m3.id != m1.id join movimientos m4 on m4.id != m3.id and m4.id != m2.id and m4.id != m1.id order by rand() limit 1;
 
 -- Slowbro
 INSERT INTO pokemons (num_pokedex, nombre, tipo, rareza, caught, hp, atk, atk_esp, def, def_esp, vel,movimiento1_id,movimiento2_id,movimiento3_id,movimiento4_id)
-SELECT '0080', 'Slowbro', 'Agua/Psíquico', 'rare', false, 95, 75, 80, 110, 80, 30,m1.id, m2.id, m3.id, m4.id
+SELECT '0080', 'Slowbro', 'Agua/Psiquico', 'rare', false, 95, 75, 80, 110, 80, 30,m1.id, m2.id, m3.id, m4.id
 FROM (SELECT id FROM movimientos ORDER BY RAND() LIMIT 4) AS movIDs join movimientos m1 on movIDs.id = m1.id join movimientos m2 on m2.id != movIDs.id join movimientos m3 on m3.id != m2.id and m3.id != m1.id join movimientos m4 on m4.id != m3.id and m4.id != m2.id and m4.id != m1.id order by rand() limit 1;
 
 -- Magnemite
 INSERT INTO pokemons (num_pokedex, nombre, tipo, rareza, caught, hp, atk, atk_esp, def, def_esp, vel,movimiento1_id,movimiento2_id,movimiento3_id,movimiento4_id)
-SELECT '0081', 'Magnemite', 'Eléctrico/Acero', 'uncommun', false, 25, 35, 60, 70, 95, 45,m1.id, m2.id, m3.id, m4.id
+SELECT '0081', 'Magnemite', 'Electrico/Acero', 'uncommun', false, 25, 35, 60, 70, 95, 45,m1.id, m2.id, m3.id, m4.id
 FROM (SELECT id FROM movimientos ORDER BY RAND() LIMIT 4) AS movIDs join movimientos m1 on movIDs.id = m1.id join movimientos m2 on m2.id != movIDs.id join movimientos m3 on m3.id != m2.id and m3.id != m1.id join movimientos m4 on m4.id != m3.id and m4.id != m2.id and m4.id != m1.id order by rand() limit 1;
 
 -- Magneton
 INSERT INTO pokemons (num_pokedex, nombre, tipo, rareza, caught, hp, atk, atk_esp, def, def_esp, vel,movimiento1_id,movimiento2_id,movimiento3_id,movimiento4_id)
-SELECT '0082', 'Magneton', 'Eléctrico/Acero', 'rare', false, 50, 60, 95, 110, 120, 70,m1.id, m2.id, m3.id, m4.id
+SELECT '0082', 'Magneton', 'Electrico/Acero', 'rare', false, 50, 60, 95, 110, 120, 70,m1.id, m2.id, m3.id, m4.id
 FROM (SELECT id FROM movimientos ORDER BY RAND() LIMIT 4) AS movIDs join movimientos m1 on movIDs.id = m1.id join movimientos m2 on m2.id != movIDs.id join movimientos m3 on m3.id != m2.id and m3.id != m1.id join movimientos m4 on m4.id != m3.id and m4.id != m2.id and m4.id != m1.id order by rand() limit 1;
 
 -- Farfetch’d
@@ -505,12 +505,12 @@ FROM (SELECT id FROM movimientos ORDER BY RAND() LIMIT 4) AS movIDs join movimie
 
 -- Drowzee
 INSERT INTO pokemons (num_pokedex, nombre, tipo, rareza, caught, hp, atk, atk_esp, def, def_esp, vel,movimiento1_id,movimiento2_id,movimiento3_id,movimiento4_id)
-SELECT '0096', 'Drowzee', 'Psíquico', 'uncommun', false, 60, 48, 60, 45, 90, 42,m1.id, m2.id, m3.id, m4.id
+SELECT '0096', 'Drowzee', 'Psiquico', 'uncommun', false, 60, 48, 60, 45, 90, 42,m1.id, m2.id, m3.id, m4.id
 FROM (SELECT id FROM movimientos ORDER BY RAND() LIMIT 4) AS movIDs join movimientos m1 on movIDs.id = m1.id join movimientos m2 on m2.id != movIDs.id join movimientos m3 on m3.id != m2.id and m3.id != m1.id join movimientos m4 on m4.id != m3.id and m4.id != m2.id and m4.id != m1.id order by rand() limit 1;
 
 -- Hypno
 INSERT INTO pokemons (num_pokedex, nombre, tipo, rareza, caught, hp, atk, atk_esp, def, def_esp, vel,movimiento1_id,movimiento2_id,movimiento3_id,movimiento4_id)
-SELECT '0097', 'Hypno', 'Psíquico', 'rare', false, 85, 73, 115, 70, 115, 67,m1.id, m2.id, m3.id, m4.id
+SELECT '0097', 'Hypno', 'Psiquico', 'rare', false, 85, 73, 115, 70, 115, 67,m1.id, m2.id, m3.id, m4.id
 FROM (SELECT id FROM movimientos ORDER BY RAND() LIMIT 4) AS movIDs join movimientos m1 on movIDs.id = m1.id join movimientos m2 on m2.id != movIDs.id join movimientos m3 on m3.id != m2.id and m3.id != m1.id join movimientos m4 on m4.id != m3.id and m4.id != m2.id and m4.id != m1.id order by rand() limit 1;
 
 -- Krabby
@@ -525,22 +525,22 @@ FROM (SELECT id FROM movimientos ORDER BY RAND() LIMIT 4) AS movIDs join movimie
 
 -- Voltorb
 INSERT INTO pokemons (num_pokedex, nombre, tipo, rareza, caught, hp, atk, atk_esp, def, def_esp, vel,movimiento1_id,movimiento2_id,movimiento3_id,movimiento4_id)
-SELECT '0100', 'Voltorb', 'Eléctrico', 'common', false, 40, 30, 55, 55, 55, 100,m1.id, m2.id, m3.id, m4.id
+SELECT '0100', 'Voltorb', 'Electrico', 'common', false, 40, 30, 55, 55, 55, 100,m1.id, m2.id, m3.id, m4.id
 FROM (SELECT id FROM movimientos ORDER BY RAND() LIMIT 4) AS movIDs join movimientos m1 on movIDs.id = m1.id join movimientos m2 on m2.id != movIDs.id join movimientos m3 on m3.id != m2.id and m3.id != m1.id join movimientos m4 on m4.id != m3.id and m4.id != m2.id and m4.id != m1.id order by rand() limit 1;
 
 -- Electrode
 INSERT INTO pokemons (num_pokedex, nombre, tipo, rareza, caught, hp, atk, atk_esp, def, def_esp, vel,movimiento1_id,movimiento2_id,movimiento3_id,movimiento4_id)
-SELECT '0101', 'Electrode', 'Eléctrico', 'uncommun', false, 60, 50, 80, 80, 80, 140,m1.id, m2.id, m3.id, m4.id
+SELECT '0101', 'Electrode', 'Electrico', 'uncommun', false, 60, 50, 80, 80, 80, 140,m1.id, m2.id, m3.id, m4.id
 FROM (SELECT id FROM movimientos ORDER BY RAND() LIMIT 4) AS movIDs join movimientos m1 on movIDs.id = m1.id join movimientos m2 on m2.id != movIDs.id join movimientos m3 on m3.id != m2.id and m3.id != m1.id join movimientos m4 on m4.id != m3.id and m4.id != m2.id and m4.id != m1.id order by rand() limit 1;
 
 -- Exeggcute
 INSERT INTO pokemons (num_pokedex, nombre, tipo, rareza, caught, hp, atk, atk_esp, def, def_esp, vel,movimiento1_id,movimiento2_id,movimiento3_id,movimiento4_id)
-SELECT '0102', 'Exeggcute', 'Planta/Psíquico', 'uncommun', false, 60, 40, 60, 80, 60, 40,m1.id, m2.id, m3.id, m4.id
+SELECT '0102', 'Exeggcute', 'Planta/Psiquico', 'uncommun', false, 60, 40, 60, 80, 60, 40,m1.id, m2.id, m3.id, m4.id
 FROM (SELECT id FROM movimientos ORDER BY RAND() LIMIT 4) AS movIDs join movimientos m1 on movIDs.id = m1.id join movimientos m2 on m2.id != movIDs.id join movimientos m3 on m3.id != m2.id and m3.id != m1.id join movimientos m4 on m4.id != m3.id and m4.id != m2.id and m4.id != m1.id order by rand() limit 1;
 
 -- Exeggutor
 INSERT INTO pokemons (num_pokedex, nombre, tipo, rareza, caught, hp, atk, atk_esp, def, def_esp, vel,movimiento1_id,movimiento2_id,movimiento3_id,movimiento4_id)
-SELECT '0103', 'Exeggutor', 'Planta/Psíquico', 'rare', false, 95, 95, 125, 85, 65, 55,m1.id, m2.id, m3.id, m4.id
+SELECT '0103', 'Exeggutor', 'Planta/Psiquico', 'rare', false, 95, 95, 125, 85, 65, 55,m1.id, m2.id, m3.id, m4.id
 FROM (SELECT id FROM movimientos ORDER BY RAND() LIMIT 4) AS movIDs join movimientos m1 on movIDs.id = m1.id join movimientos m2 on m2.id != movIDs.id join movimientos m3 on m3.id != m2.id and m3.id != m1.id join movimientos m4 on m4.id != m3.id and m4.id != m2.id and m4.id != m1.id order by rand() limit 1;
 
 -- Cubone
@@ -630,12 +630,12 @@ FROM (SELECT id FROM movimientos ORDER BY RAND() LIMIT 4) AS movIDs join movimie
 
 -- Starmie
 INSERT INTO pokemons (num_pokedex, nombre, tipo, rareza, caught, hp, atk, atk_esp, def, def_esp, vel,movimiento1_id,movimiento2_id,movimiento3_id,movimiento4_id)
-SELECT '0121', 'Starmie', 'Agua/Psíquico', 'rare', false, 60, 75, 100, 100, 85, 115,m1.id, m2.id, m3.id, m4.id
+SELECT '0121', 'Starmie', 'Agua/Psiquico', 'rare', false, 60, 75, 100, 100, 85, 115,m1.id, m2.id, m3.id, m4.id
 FROM (SELECT id FROM movimientos ORDER BY RAND() LIMIT 4) AS movIDs join movimientos m1 on movIDs.id = m1.id join movimientos m2 on m2.id != movIDs.id join movimientos m3 on m3.id != m2.id and m3.id != m1.id join movimientos m4 on m4.id != m3.id and m4.id != m2.id and m4.id != m1.id order by rand() limit 1;
 
 -- Mr. Mime
 INSERT INTO pokemons (num_pokedex, nombre, tipo, rareza, caught, hp, atk, atk_esp, def, def_esp, vel,movimiento1_id,movimiento2_id,movimiento3_id,movimiento4_id)
-SELECT '0122', 'Mr. Mime', 'Psíquico/Hada', 'rare', false, 40, 45, 100, 120, 90, 105,m1.id, m2.id, m3.id, m4.id
+SELECT '0122', 'Mr. Mime', 'Psiquico/Hada', 'rare', false, 40, 45, 100, 120, 90, 105,m1.id, m2.id, m3.id, m4.id
 FROM (SELECT id FROM movimientos ORDER BY RAND() LIMIT 4) AS movIDs join movimientos m1 on movIDs.id = m1.id join movimientos m2 on m2.id != movIDs.id join movimientos m3 on m3.id != m2.id and m3.id != m1.id join movimientos m4 on m4.id != m3.id and m4.id != m2.id and m4.id != m1.id order by rand() limit 1;
 
 -- Scyther
@@ -645,12 +645,12 @@ FROM (SELECT id FROM movimientos ORDER BY RAND() LIMIT 4) AS movIDs join movimie
 
 -- Jynx
 INSERT INTO pokemons (num_pokedex, nombre, tipo, rareza, caught, hp, atk, atk_esp, def, def_esp, vel,movimiento1_id,movimiento2_id,movimiento3_id,movimiento4_id)
-SELECT '0124', 'Jynx', 'Hielo/Psíquico', 'rare', false, 65, 50, 115, 35, 95, 95,m1.id, m2.id, m3.id, m4.id
+SELECT '0124', 'Jynx', 'Hielo/Psiquico', 'rare', false, 65, 50, 115, 35, 95, 95,m1.id, m2.id, m3.id, m4.id
 FROM (SELECT id FROM movimientos ORDER BY RAND() LIMIT 4) AS movIDs join movimientos m1 on movIDs.id = m1.id join movimientos m2 on m2.id != movIDs.id join movimientos m3 on m3.id != m2.id and m3.id != m1.id join movimientos m4 on m4.id != m3.id and m4.id != m2.id and m4.id != m1.id order by rand() limit 1;
 
 -- Electabuzz
 INSERT INTO pokemons (num_pokedex, nombre, tipo, rareza, caught, hp, atk, atk_esp, def, def_esp, vel,movimiento1_id,movimiento2_id,movimiento3_id,movimiento4_id)
-SELECT '0125', 'Electabuzz', 'Eléctrico', 'rare', false, 65, 83, 95, 57, 85, 105,m1.id, m2.id, m3.id, m4.id
+SELECT '0125', 'Electabuzz', 'Electrico', 'rare', false, 65, 83, 95, 57, 85, 105,m1.id, m2.id, m3.id, m4.id
 FROM (SELECT id FROM movimientos ORDER BY RAND() LIMIT 4) AS movIDs join movimientos m1 on movIDs.id = m1.id join movimientos m2 on m2.id != movIDs.id join movimientos m3 on m3.id != m2.id and m3.id != m1.id join movimientos m4 on m4.id != m3.id and m4.id != m2.id and m4.id != m1.id order by rand() limit 1;
 
 -- Magmar
@@ -700,7 +700,7 @@ FROM (SELECT id FROM movimientos ORDER BY RAND() LIMIT 4) AS movIDs join movimie
 
 -- Jolteon
 INSERT INTO pokemons (num_pokedex, nombre, tipo, rareza, caught, hp, atk, atk_esp, def, def_esp, vel,movimiento1_id,movimiento2_id,movimiento3_id,movimiento4_id)
-SELECT '0135', 'Jolteon', 'Eléctrico', 'epic', false, 65, 65, 110, 60, 95, 130,m1.id, m2.id, m3.id, m4.id
+SELECT '0135', 'Jolteon', 'Electrico', 'epic', false, 65, 65, 110, 60, 95, 130,m1.id, m2.id, m3.id, m4.id
 FROM (SELECT id FROM movimientos ORDER BY RAND() LIMIT 4) AS movIDs join movimientos m1 on movIDs.id = m1.id join movimientos m2 on m2.id != movIDs.id join movimientos m3 on m3.id != m2.id and m3.id != m1.id join movimientos m4 on m4.id != m3.id and m4.id != m2.id and m4.id != m1.id order by rand() limit 1;
 
 -- Flareon
@@ -750,7 +750,7 @@ FROM (SELECT id FROM movimientos ORDER BY RAND() LIMIT 4) AS movIDs join movimie
 
 -- Zapdos
 INSERT INTO pokemons (num_pokedex, nombre, tipo, rareza, caught, hp, atk, atk_esp, def, def_esp, vel,movimiento1_id,movimiento2_id,movimiento3_id,movimiento4_id)
-SELECT '0145', 'Zapdos', 'Eléctrico/Volador', 'mythical', false, 90, 90, 125, 85, 90, 100,m1.id, m2.id, m3.id, m4.id
+SELECT '0145', 'Zapdos', 'Electrico/Volador', 'mythical', false, 90, 90, 125, 85, 90, 100,m1.id, m2.id, m3.id, m4.id
 FROM (SELECT id FROM movimientos ORDER BY RAND() LIMIT 4) AS movIDs join movimientos m1 on movIDs.id = m1.id join movimientos m2 on m2.id != movIDs.id join movimientos m3 on m3.id != m2.id and m3.id != m1.id join movimientos m4 on m4.id != m3.id and m4.id != m2.id and m4.id != m1.id order by rand() limit 1;
 
 -- Moltres
@@ -775,10 +775,10 @@ FROM (SELECT id FROM movimientos ORDER BY RAND() LIMIT 4) AS movIDs join movimie
 
 -- Mewtwo
 INSERT INTO pokemons (num_pokedex, nombre, tipo, rareza, caught, hp, atk, atk_esp, def, def_esp, vel,movimiento1_id,movimiento2_id,movimiento3_id,movimiento4_id)
-SELECT '0150', 'Mewtwo', 'Psíquico', 'legendary', false, 106, 110, 154, 90, 90, 130,m1.id, m2.id, m3.id, m4.id
+SELECT '0150', 'Mewtwo', 'Psiquico', 'legendary', false, 106, 110, 154, 90, 90, 130,m1.id, m2.id, m3.id, m4.id
 FROM (SELECT id FROM movimientos ORDER BY RAND() LIMIT 4) AS movIDs join movimientos m1 on movIDs.id = m1.id join movimientos m2 on m2.id != movIDs.id join movimientos m3 on m3.id != m2.id and m3.id != m1.id join movimientos m4 on m4.id != m3.id and m4.id != m2.id and m4.id != m1.id order by rand() limit 1;
 
 -- Mew
 INSERT INTO pokemons (num_pokedex, nombre, tipo, rareza, caught, hp, atk, atk_esp, def, def_esp, vel, movimiento1_id, movimiento2_id, movimiento3_id, movimiento4_id)
-SELECT '0151', 'Mew', 'Psíquico', 'mythical', false, 100, 100, 100, 100, 100, 100,m1.id, m2.id, m3.id, m4.id
+SELECT '0151', 'Mew', 'Psiquico', 'mythical', false, 100, 100, 100, 100, 100, 100,m1.id, m2.id, m3.id, m4.id
 FROM (SELECT id FROM movimientos ORDER BY RAND() LIMIT 4) AS movIDs join movimientos m1 on movIDs.id = m1.id join movimientos m2 on m2.id != movIDs.id join movimientos m3 on m3.id != m2.id and m3.id != m1.id join movimientos m4 on m4.id != m3.id and m4.id != m2.id and m4.id != m1.id order by rand() limit 1;
