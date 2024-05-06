@@ -2,22 +2,15 @@ package com.example.API_POKEMON_CRUD.Controllerr;
 
 import java.util.List;
 
+import com.example.API_POKEMON_CRUD.entidad.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
-import com.example.API_POKEMON_CRUD.entidad.user_pokemon;
 import com.example.API_POKEMON_CRUD.jasonwebtoken.JwtUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.example.API_POKEMON_CRUD.Servicios.UserDetailsServiceImpl;
@@ -27,9 +20,6 @@ import com.example.API_POKEMON_CRUD.FTO.user_pokemon_register;
 import com.example.API_POKEMON_CRUD.Repository.UserPokemonCaughtRepository;
 import com.example.API_POKEMON_CRUD.Servicios.pokemon_methods;
 import com.example.API_POKEMON_CRUD.Servicios.user_method;
-import com.example.API_POKEMON_CRUD.entidad.AddPokemonRequest;
-import com.example.API_POKEMON_CRUD.entidad.FindUserIdRequest;
-import com.example.API_POKEMON_CRUD.entidad.pokemons;
 
 @RestController
 @RequestMapping("/api")
@@ -86,6 +76,10 @@ public class restcontrollerapi {
 	@GetMapping("/pokemons")
 	public List<pokemons> caughtPokemons() {
 		return servicio.pokemonscaught();
+	}
+	@GetMapping("/movimientos/{idPokemon}")
+	public List<Movimiento> listarMovimientos(@PathVariable long idPokemon) {
+		return servicio.movimientosByPokemonId(idPokemon);
 	}
 
 	@PostMapping("/regist")

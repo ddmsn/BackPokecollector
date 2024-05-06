@@ -2,6 +2,7 @@ package com.example.API_POKEMON_CRUD.Servicios;
 
 import java.util.List;
 
+import com.example.API_POKEMON_CRUD.entidad.Movimiento;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +32,11 @@ public class use_pokemons_method implements pokemon_methods {
 	public List<pokemons> pokemonscaught() {
 		// TODO Auto-generated method stub
 		return repository.Pokemonscaught();
+	}
+	@Override
+	public List<Movimiento> movimientosByPokemonId(Long id) {
+		// TODO Auto-generated method stub
+		return repository.findMovimientosByPokemonId(id);
 	}
 
 }
