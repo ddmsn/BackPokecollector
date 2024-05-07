@@ -1,3 +1,6 @@
+DELETE FROM pokemons;
+DELETE FROM movimientos;
+
 INSERT INTO movimientos (nombre, danio) VALUES ('Ataque Rápido', 40);
 INSERT INTO movimientos (nombre, danio) VALUES ('Rabia', 20);
 INSERT INTO movimientos (nombre, danio) VALUES ('Autodestrucción', 200);

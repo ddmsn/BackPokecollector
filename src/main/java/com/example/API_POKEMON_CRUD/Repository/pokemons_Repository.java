@@ -26,6 +26,4 @@ List<pokemons>Pokemonscaught();
 			"p.movimiento4.id = m.id " +
 			"WHERE p.id = :pokemonId")
 	List<Movimiento> findMovimientosByPokemonId(@Param("pokemonId") Long pokemonId);
-
-
 }

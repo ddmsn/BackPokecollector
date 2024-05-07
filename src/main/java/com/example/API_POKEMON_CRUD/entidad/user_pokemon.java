@@ -74,6 +74,11 @@ public class user_pokemon {
 	@NotBlank
 	private String email;
 
+	@Column (name = "equipos")
+	@OneToMany(mappedBy = "userPokemon")
+	private List<EquipoPokemon> equipos;
+
+
 	@ManyToMany(fetch=FetchType.EAGER, cascade=CascadeType.MERGE)
 	@JoinTable(
 			name="user_pokemon_caught" ,

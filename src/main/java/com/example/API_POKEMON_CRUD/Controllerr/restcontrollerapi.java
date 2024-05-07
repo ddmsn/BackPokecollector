@@ -82,7 +82,6 @@ public class restcontrollerapi {
 	}
 	@GetMapping("/movimientos/{idPokemon}")
 	public List<Movimiento> listarMovimientos(@PathVariable Long idPokemon) {
-
 		return servicio.movimientosByPokemonId(idPokemon);
 	}
 

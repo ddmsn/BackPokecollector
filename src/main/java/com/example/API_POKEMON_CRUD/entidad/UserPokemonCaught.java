@@ -35,6 +35,9 @@ public class UserPokemonCaught {
 	    @ManyToOne
 	    @JoinColumn(name = "pokemon_id")
 	    private pokemons pokemon;
+	@ManyToOne
+	@JoinColumn(name = "equipo_id")
+	private EquipoPokemon equipoPokemon;
 	public Long getId() {
 		return id;
 	}
