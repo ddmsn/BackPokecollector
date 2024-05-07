@@ -1,8 +1,10 @@
 package com.example.API_POKEMON_CRUD.Controllerr;
 
+import java.util.Arrays;
 import java.util.List;
 
 import com.example.API_POKEMON_CRUD.entidad.*;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +23,7 @@ import com.example.API_POKEMON_CRUD.Repository.UserPokemonCaughtRepository;
 import com.example.API_POKEMON_CRUD.Servicios.pokemon_methods;
 import com.example.API_POKEMON_CRUD.Servicios.user_method;
 
+@Slf4j
 @RestController
 @RequestMapping("/api")
 @CrossOrigin(origins = "http://localhost:4200/")
@@ -78,7 +81,8 @@ public class restcontrollerapi {
 		return servicio.pokemonscaught();
 	}
 	@GetMapping("/movimientos/{idPokemon}")
-	public List<Movimiento> listarMovimientos(@PathVariable long idPokemon) {
+	public List<Movimiento> listarMovimientos(@PathVariable Long idPokemon) {
+
 		return servicio.movimientosByPokemonId(idPokemon);
 	}
 

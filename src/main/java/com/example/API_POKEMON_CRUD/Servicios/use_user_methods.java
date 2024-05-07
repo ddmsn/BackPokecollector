@@ -88,9 +88,5 @@ public class use_user_methods implements user_method{
 	public void deleteCaughtPokemon(Long pokemonId, Long userPokemonId) {
 		 userPokemonCaughtRepository.deleteByPokemonIdAndUserPokemonId(pokemonId, userPokemonId);
 	}
-	
-
-
-
 
 }

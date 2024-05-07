@@ -7,7 +7,6 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name="pokemons")
-
 public class pokemons {
 	
 	@Id
