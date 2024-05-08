@@ -1,9 +1,8 @@
 package com.example.API_POKEMON_CRUD.Servicios;
 
-import java.lang.reflect.Field;
-import java.util.Arrays;
 import java.util.List;
 
+import com.example.API_POKEMON_CRUD.entidad.EquipoPokemon;
 import com.example.API_POKEMON_CRUD.entidad.Movimiento;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,5 +38,6 @@ public class use_pokemons_method implements pokemon_methods {
 	public List<Movimiento> movimientosByPokemonId(Long id) {
 		return repository.findMovimientosByPokemonId(id);
 	}
+
 
 }

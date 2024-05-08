@@ -31,6 +31,12 @@ INSERT INTO movimientos (nombre, danio) VALUES ('Combate', 50);
 
 /*------------------------------------------------------------------------*/
 
+/*INSERT INTO equipo_pokemon (user_id, pokemon1_id, pokemon2_id, pokemon3_id, pokemon4_id, pokemon5_id, pokemon6_id)
+VALUES (1, 1, 2, 3, 4, 5, 6);*/
+
+
+/*------------------------------------------------------------------------*/
+
 -- Bulbasaur
 INSERT INTO pokemons (num_pokedex, nombre, tipo, rareza, caught, hp, atk, atk_esp, def, def_esp, vel,movimiento1_id,movimiento2_id,movimiento3_id,movimiento4_id)
 SELECT '0001', 'Bulbasaur', 'Planta/Veneno', 'Comun', false, 45, 49, 65, 49, 65, 45,m1.id, m2.id, m3.id, m4.id

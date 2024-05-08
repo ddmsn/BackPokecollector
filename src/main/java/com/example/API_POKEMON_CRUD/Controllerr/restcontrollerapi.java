@@ -1,8 +1,8 @@
 package com.example.API_POKEMON_CRUD.Controllerr;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
+import com.example.API_POKEMON_CRUD.Repository.Equipos_Repository;
 import com.example.API_POKEMON_CRUD.entidad.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +16,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.example.API_POKEMON_CRUD.jasonwebtoken.JwtUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.example.API_POKEMON_CRUD.Servicios.UserDetailsServiceImpl;
-import java.util.HashMap;
-import java.util.Map;
 import com.example.API_POKEMON_CRUD.FTO.user_pokemon_register;
 import com.example.API_POKEMON_CRUD.Repository.UserPokemonCaughtRepository;
 import com.example.API_POKEMON_CRUD.Servicios.pokemon_methods;
@@ -28,7 +26,9 @@ import com.example.API_POKEMON_CRUD.Servicios.user_method;
 @RequestMapping("/api")
 @CrossOrigin(origins = "http://localhost:4200/")
 public class restcontrollerapi {
-	
+
+	@Autowired
+	private Equipos_Repository equiposRepository;
 	@Autowired
 	private UserPokemonCaughtRepository userPokemonCaught;
 
@@ -83,6 +83,30 @@ public class restcontrollerapi {
 	@GetMapping("/movimientos/{idPokemon}")
 	public List<Movimiento> listarMovimientos(@PathVariable Long idPokemon) {
 		return servicio.movimientosByPokemonId(idPokemon);
+	}
+
+	@PostMapping("/guardarEquipo")
+	public ResponseEntity<String> guardarEquipo(@RequestBody LinkedHashMap<String, Object> equipo) {
+		try {
+			equiposRepository.guardarEquipoPokemon((Integer) equipo.get("user_id"),
+					(String) equipo.get("nombre"),
+					(Integer) equipo.get("pokemon1_id"),
+					(Integer) equipo.get("pokemon2_id"),
+					(Integer) equipo.get("pokemon3_id"),
+					(Integer) equipo.get("pokemon4_id"),
+					(Integer) equipo.get("pokemon5_id"),
+					(Integer) equipo.get("pokemon6_id"));
+
+			Map<String, String> successResponse = new HashMap<>();
+			successResponse.put("message", "Equipo añadido exitosamente.");
+
+			ObjectMapper objectMapper = new ObjectMapper();
+			String successJson = objectMapper.writeValueAsString(successResponse);
+
+			return ResponseEntity.ok(successJson);
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al crear el equipo Pokemon");
+		}
 	}
 
 	@PostMapping("/regist")

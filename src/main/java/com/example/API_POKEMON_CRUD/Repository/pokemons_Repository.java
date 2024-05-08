@@ -2,6 +2,7 @@ package com.example.API_POKEMON_CRUD.Repository;
 
 import java.util.List;
 
+import com.example.API_POKEMON_CRUD.entidad.EquipoPokemon;
 import com.example.API_POKEMON_CRUD.entidad.Movimiento;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -26,4 +27,6 @@ List<pokemons>Pokemonscaught();
 			"p.movimiento4.id = m.id " +
 			"WHERE p.id = :pokemonId")
 	List<Movimiento> findMovimientosByPokemonId(@Param("pokemonId") Long pokemonId);
+
+
 }
