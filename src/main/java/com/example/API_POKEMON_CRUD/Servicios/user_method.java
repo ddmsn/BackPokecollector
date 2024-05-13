@@ -24,10 +24,6 @@ public interface user_method {
    public Long findUserIdByNombre(String nombre);
    
    public void deleteCaughtPokemon(Long pokemonId, Long userPokemonId);
- 
-
-
-	
 	
 	 
 }

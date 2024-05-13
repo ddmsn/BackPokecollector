@@ -88,14 +88,15 @@ public class restcontrollerapi {
 	@PostMapping("/guardarEquipo")
 	public ResponseEntity<String> guardarEquipo(@RequestBody LinkedHashMap<String, Object> equipo) {
 		try {
-			equiposRepository.guardarEquipoPokemon((Integer) equipo.get("user_id"),
-					(String) equipo.get("nombre"),
-					(Integer) equipo.get("pokemon1_id"),
-					(Integer) equipo.get("pokemon2_id"),
-					(Integer) equipo.get("pokemon3_id"),
-					(Integer) equipo.get("pokemon4_id"),
-					(Integer) equipo.get("pokemon5_id"),
-					(Integer) equipo.get("pokemon6_id"));
+			equiposRepository.guardarEquipoPokemon(
+					(Integer) equipo.get("_user_id"),
+					(String) equipo.get("_nombre"),
+					(Integer) equipo.get("_pokemon1_id"),
+					(Integer) equipo.get("_pokemon2_id"),
+					(Integer) equipo.get("_pokemon3_id"),
+					(Integer) equipo.get("_pokemon4_id"),
+					(Integer) equipo.get("_pokemon5_id"),
+					(Integer) equipo.get("_pokemon6_id"));
 
 			Map<String, String> successResponse = new HashMap<>();
 			successResponse.put("message", "Equipo añadido exitosamente.");
