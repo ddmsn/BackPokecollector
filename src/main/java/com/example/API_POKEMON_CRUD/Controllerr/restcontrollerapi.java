@@ -84,20 +84,48 @@ public class restcontrollerapi {
 	public List<Movimiento> listarMovimientos(@PathVariable Long idPokemon) {
 		return servicio.movimientosByPokemonId(idPokemon);
 	}
+	@GetMapping("/getAllEquipos/{idUsuario}")
+	public LinkedHashMap<String, Object> listarEquipos(@PathVariable Long idUsuario) {
+		log.error("numero: "+idUsuario);
+		List<EquipoPokemon> lista = equiposRepository.findAllEquiposByIdUser(idUsuario);
+		LinkedHashMap<String, Object> equipoPokemon = new LinkedHashMap<String,Object>();
+		equipoPokemon.put("_user_id",lista.get(0).getUserPokemon().getId());
+		equipoPokemon.put("_nombre",lista.get(0).getNombreEquipo());
+		equipoPokemon.put("_pokemon1_id",lista.get(0).getPokemon1().getId());
+		equipoPokemon.put("_pokemon2_id",lista.get(0).getPokemon2().getId());
+		equipoPokemon.put("_pokemon3_id",lista.get(0).getPokemon3().getId());
+		equipoPokemon.put("_pokemon4_id",lista.get(0).getPokemon4().getId());
+		equipoPokemon.put("_pokemon5_id",lista.get(0).getPokemon5().getId());
+		equipoPokemon.put("_pokemon6_id",lista.get(0).getPokemon6().getId());
+		return equipoPokemon;
+	}
 
 	@PostMapping("/guardarEquipo")
 	public ResponseEntity<String> guardarEquipo(@RequestBody LinkedHashMap<String, Object> equipo) {
 		try {
-			equiposRepository.guardarEquipoPokemon(
-					(Integer) equipo.get("_user_id"),
-					(String) equipo.get("_nombre"),
-					(Integer) equipo.get("_pokemon1_id"),
-					(Integer) equipo.get("_pokemon2_id"),
-					(Integer) equipo.get("_pokemon3_id"),
-					(Integer) equipo.get("_pokemon4_id"),
-					(Integer) equipo.get("_pokemon5_id"),
-					(Integer) equipo.get("_pokemon6_id"));
-
+			if(equiposRepository.comprobarEquiposActivos((Integer) equipo.get("_user_id")) >= 1){
+				equiposRepository.guardarEquipoPokemon(
+						(Integer) equipo.get("_user_id"),
+						(String) equipo.get("_nombre"),
+						(Integer) equipo.get("_pokemon1_id"),
+						(Integer) equipo.get("_pokemon2_id"),
+						(Integer) equipo.get("_pokemon3_id"),
+						(Integer) equipo.get("_pokemon4_id"),
+						(Integer) equipo.get("_pokemon5_id"),
+						(Integer) equipo.get("_pokemon6_id"),
+						false);
+			}else{
+				equiposRepository.guardarEquipoPokemon(
+						(Integer) equipo.get("_user_id"),
+						(String) equipo.get("_nombre"),
+						(Integer) equipo.get("_pokemon1_id"),
+						(Integer) equipo.get("_pokemon2_id"),
+						(Integer) equipo.get("_pokemon3_id"),
+						(Integer) equipo.get("_pokemon4_id"),
+						(Integer) equipo.get("_pokemon5_id"),
+						(Integer) equipo.get("_pokemon6_id"),
+						true);
+			}
 			Map<String, String> successResponse = new HashMap<>();
 			successResponse.put("message", "Equipo añadido exitosamente.");
 

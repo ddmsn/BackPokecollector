@@ -45,9 +45,6 @@ public class pokemons {
 	
 	@Column (name="vel")
 	private int vel;
-	
-	@ManyToMany(mappedBy="pokemons_usuarios")
-	private List<user_pokemon> users;
 
 	@ManyToOne
 	@JoinColumn(name = "movimiento1_id")

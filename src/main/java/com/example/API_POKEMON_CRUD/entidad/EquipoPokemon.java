@@ -16,7 +16,11 @@ public class EquipoPokemon {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-@Column(name = "nombre")
+
+    @Column(name = "activo")
+    private boolean activo;
+
+    @Column(name = "nombre")
     private String nombreEquipo;
 
     @ManyToOne
