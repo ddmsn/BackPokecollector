@@ -84,8 +84,9 @@ public class DataSQLAspect {
         Integer idPoke4 = (Integer) args[5];
         Integer idPoke5 = (Integer) args[6];
         Integer idPoke6 = (Integer) args[7];
-        String sql = String.format("INSERT INTO equipo_pokemon (user_id, nombre ,pokemon1_id, pokemon2_id, pokemon3_id, pokemon4_id, pokemon5_id, pokemon6_id) VALUES (%d,%s,%d,%d,%d,%d,%d,%d);",
-                userId,"'"+nombreTeam+"'",idPoke1,idPoke2,idPoke3,idPoke4,idPoke5,idPoke6);
+        boolean activo = (boolean) args[8];
+        String sql = String.format("INSERT INTO equipo_pokemon (user_id, nombre ,pokemon1_id, pokemon2_id, pokemon3_id, pokemon4_id, pokemon5_id, pokemon6_id,activo) VALUES (%d,%s,%d,%d,%d,%d,%d,%d,%b);",
+                userId,"'"+nombreTeam+"'",idPoke1,idPoke2,idPoke3,idPoke4,idPoke5,idPoke6 ,activo);
         try(FileWriter fileWriter = new FileWriter("./src/main/resources/SQLs/pokeTeamsAdded.sql",true)) {
             fileWriter.write(sql);
             fileWriter.write(System.lineSeparator());

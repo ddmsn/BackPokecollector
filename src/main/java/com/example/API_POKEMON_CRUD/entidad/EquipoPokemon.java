@@ -51,18 +51,4 @@ public class EquipoPokemon {
     @JoinColumn(name = "pokemon6_id")
     private pokemons pokemon6;
 
-    /*@PrePersist
-    public void validateUniquePokemon() {
-        Set<Long> pokemonIds = new HashSet<>();
-        if (pokemon1 != null) pokemonIds.add(pokemon1.getId());
-        if (pokemon2 != null) pokemonIds.add(pokemon2.getId());
-        if (pokemon3 != null) pokemonIds.add(pokemon3.getId());
-        if (pokemon4 != null) pokemonIds.add(pokemon4.getId());
-        if (pokemon5 != null) pokemonIds.add(pokemon5.getId());
-        if (pokemon6 != null) pokemonIds.add(pokemon6.getId());
-
-        if (pokemonIds.size() < 6) {
-            throw new IllegalStateException("No puede haber pokemons duplicados en el equipo.");
-        }
-    }*/
 }

@@ -85,19 +85,23 @@ public class restcontrollerapi {
 		return servicio.movimientosByPokemonId(idPokemon);
 	}
 	@GetMapping("/getAllEquipos/{idUsuario}")
-	public LinkedHashMap<String, Object> listarEquipos(@PathVariable Long idUsuario) {
+	public ArrayList<LinkedHashMap<String, Object>> listarEquipos(@PathVariable Long idUsuario) {
 		log.error("numero: "+idUsuario);
 		List<EquipoPokemon> lista = equiposRepository.findAllEquiposByIdUser(idUsuario);
-		LinkedHashMap<String, Object> equipoPokemon = new LinkedHashMap<String,Object>();
-		equipoPokemon.put("_user_id",lista.get(0).getUserPokemon().getId());
-		equipoPokemon.put("_nombre",lista.get(0).getNombreEquipo());
-		equipoPokemon.put("_pokemon1_id",lista.get(0).getPokemon1().getId());
-		equipoPokemon.put("_pokemon2_id",lista.get(0).getPokemon2().getId());
-		equipoPokemon.put("_pokemon3_id",lista.get(0).getPokemon3().getId());
-		equipoPokemon.put("_pokemon4_id",lista.get(0).getPokemon4().getId());
-		equipoPokemon.put("_pokemon5_id",lista.get(0).getPokemon5().getId());
-		equipoPokemon.put("_pokemon6_id",lista.get(0).getPokemon6().getId());
-		return equipoPokemon;
+		ArrayList<LinkedHashMap<String, Object>> equipos = new ArrayList<>();
+		for (int i = 0; i < lista.size(); i++) {
+			LinkedHashMap<String, Object> equipoPokemon = new LinkedHashMap<String,Object>();
+			equipoPokemon.put("user_id",lista.get(i).getUserPokemon().getId());
+			equipoPokemon.put("nombre",lista.get(i).getNombreEquipo());
+			equipoPokemon.put("pokemon1_id",lista.get(i).getPokemon1().getId());
+			equipoPokemon.put("pokemon2_id",lista.get(i).getPokemon2().getId());
+			equipoPokemon.put("pokemon3_id",lista.get(i).getPokemon3().getId());
+			equipoPokemon.put("pokemon4_id",lista.get(i).getPokemon4().getId());
+			equipoPokemon.put("pokemon5_id",lista.get(i).getPokemon5().getId());
+			equipoPokemon.put("pokemon6_id",lista.get(i).getPokemon6().getId());
+			equipos.add(equipoPokemon);
+		}
+		return equipos;
 	}
 
 	@PostMapping("/guardarEquipo")
@@ -105,25 +109,25 @@ public class restcontrollerapi {
 		try {
 			if(equiposRepository.comprobarEquiposActivos((Integer) equipo.get("_user_id")) >= 1){
 				equiposRepository.guardarEquipoPokemon(
-						(Integer) equipo.get("_user_id"),
-						(String) equipo.get("_nombre"),
-						(Integer) equipo.get("_pokemon1_id"),
-						(Integer) equipo.get("_pokemon2_id"),
-						(Integer) equipo.get("_pokemon3_id"),
-						(Integer) equipo.get("_pokemon4_id"),
-						(Integer) equipo.get("_pokemon5_id"),
-						(Integer) equipo.get("_pokemon6_id"),
+						(Integer) equipo.get("user_id"),
+						(String) equipo.get("nombre"),
+						(Integer) equipo.get("pokemon1_id"),
+						(Integer) equipo.get("pokemon2_id"),
+						(Integer) equipo.get("pokemon3_id"),
+						(Integer) equipo.get("pokemon4_id"),
+						(Integer) equipo.get("pokemon5_id"),
+						(Integer) equipo.get("pokemon6_id"),
 						false);
 			}else{
 				equiposRepository.guardarEquipoPokemon(
-						(Integer) equipo.get("_user_id"),
-						(String) equipo.get("_nombre"),
-						(Integer) equipo.get("_pokemon1_id"),
-						(Integer) equipo.get("_pokemon2_id"),
-						(Integer) equipo.get("_pokemon3_id"),
-						(Integer) equipo.get("_pokemon4_id"),
-						(Integer) equipo.get("_pokemon5_id"),
-						(Integer) equipo.get("_pokemon6_id"),
+						(Integer) equipo.get("user_id"),
+						(String) equipo.get("nombre"),
+						(Integer) equipo.get("pokemon1_id"),
+						(Integer) equipo.get("pokemon2_id"),
+						(Integer) equipo.get("pokemon3_id"),
+						(Integer) equipo.get("pokemon4_id"),
+						(Integer) equipo.get("pokemon5_id"),
+						(Integer) equipo.get("pokemon6_id"),
 						true);
 			}
 			Map<String, String> successResponse = new HashMap<>();
