@@ -18,6 +18,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.example.API_POKEMON_CRUD.Servicios.UserDetailsServiceImpl;
 import com.example.API_POKEMON_CRUD.FTO.user_pokemon_register;
 import com.example.API_POKEMON_CRUD.Repository.UserPokemonCaughtRepository;
+import com.example.API_POKEMON_CRUD.Repository.pokemons_Repository;
 import com.example.API_POKEMON_CRUD.Servicios.pokemon_methods;
 import com.example.API_POKEMON_CRUD.Servicios.user_method;
 
@@ -37,6 +38,8 @@ public class restcontrollerapi {
 
 	@Autowired
 	private pokemon_methods servicio;
+	@Autowired
+	private pokemons_Repository pokemonsrepository;
 
 	@Autowired
 	private AuthenticationManager authenticationManager;
@@ -80,6 +83,15 @@ public class restcontrollerapi {
 	public List<pokemons> caughtPokemons() {
 		return servicio.pokemonscaught();
 	}
+	@GetMapping("pokemon/{id}")
+	    public ResponseEntity<pokemons> getPokemonById(@PathVariable Long id) {
+	        pokemons pokemon = pokemonsrepository.findById(id).orElse(null);
+	        if (pokemon != null) {
+	            return new ResponseEntity<>(pokemon, HttpStatus.OK);
+	        } else {
+	            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	        }
+	    }
 	@GetMapping("/movimientos/{idPokemon}")
 	public List<Movimiento> listarMovimientos(@PathVariable Long idPokemon) {
 		return servicio.movimientosByPokemonId(idPokemon);
