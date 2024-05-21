@@ -60,3 +60,17 @@ INSERT INTO user_pokemon_caught (pokemon_id, user_pokemon_id) VALUES (77, 5);
 INSERT INTO user_pokemon_caught (pokemon_id, user_pokemon_id) VALUES (90, 5);
 
 INSERT INTO user_pokemon_caught (pokemon_id, user_pokemon_id) VALUES (50, 5);
+
+INSERT INTO user_pokemon_caught (pokemon_id, user_pokemon_id) VALUES (120, 1);
+
+INSERT INTO user_pokemon_caught (pokemon_id, user_pokemon_id) VALUES (100, 6);
+
+INSERT INTO user_pokemon_caught (pokemon_id, user_pokemon_id) VALUES (42, 6);
+
+INSERT INTO user_pokemon_caught (pokemon_id, user_pokemon_id) VALUES (101, 6);
+
+INSERT INTO user_pokemon_caught (pokemon_id, user_pokemon_id) VALUES (48, 6);
+
+INSERT INTO user_pokemon_caught (pokemon_id, user_pokemon_id) VALUES (41, 6);
+
+INSERT INTO user_pokemon_caught (pokemon_id, user_pokemon_id) VALUES (138, 6);

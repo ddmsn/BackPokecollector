@@ -31,4 +31,8 @@ public interface Equipos_Repository extends JpaRepository<EquipoPokemon,Long> {
             "where p.user_id = :user and p.activo = true",
             nativeQuery = true)
     Integer comprobarEquiposActivos(@Param("user")Integer userId);
+    @Modifying
+    @Query(value = "UPDATE equipo_pokemon SET nombre = :nombre,pokemon1_id = :poke1, pokemon2_id = :poke2, pokemon3_id = :poke3, pokemon4_id = :poke4, pokemon5_id = :poke5, pokemon6_id = :poke6 WHERE user_id = :id",nativeQuery = true)
+    @Transactional
+    void modificarEquipoPokemon(@Param("id")Integer id,@Param("nombre")String nombre,@Param("poke1") Integer idPoke,@Param("poke2") Integer idPoke2,@Param("poke3") Integer idPoke3,@Param("poke4") Integer idPoke4,@Param("poke5") Integer idPoke5,@Param("poke6") Integer idPoke6);
 }

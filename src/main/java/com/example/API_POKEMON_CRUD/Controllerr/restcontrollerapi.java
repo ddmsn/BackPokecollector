@@ -119,17 +119,28 @@ public class restcontrollerapi {
 	@PostMapping("/guardarEquipo")
 	public ResponseEntity<String> guardarEquipo(@RequestBody LinkedHashMap<String, Object> equipo) {
 		try {
-			if(equiposRepository.comprobarEquiposActivos((Integer) equipo.get("_user_id")) >= 1){
-				equiposRepository.guardarEquipoPokemon(
-						(Integer) equipo.get("user_id"),
-						(String) equipo.get("nombre"),
-						(Integer) equipo.get("pokemon1_id"),
-						(Integer) equipo.get("pokemon2_id"),
-						(Integer) equipo.get("pokemon3_id"),
-						(Integer) equipo.get("pokemon4_id"),
-						(Integer) equipo.get("pokemon5_id"),
-						(Integer) equipo.get("pokemon6_id"),
-						false);
+			if(equiposRepository.comprobarEquiposActivos((Integer) equipo.get("user_id")) >= 1){
+				try{
+					equiposRepository.modificarEquipoPokemon(
+							(Integer) equipo.get("user_id"),
+							(String) equipo.get("nombre"),
+							(Integer) equipo.get("pokemon1_id"),
+							(Integer) equipo.get("pokemon2_id"),
+							(Integer) equipo.get("pokemon3_id"),
+							(Integer) equipo.get("pokemon4_id"),
+							(Integer) equipo.get("pokemon5_id"),
+							(Integer) equipo.get("pokemon6_id"));
+					Map<String, String> successResponse = new HashMap<>();
+					successResponse.put("message", "Equipo modificado exitosamente.");
+
+					ObjectMapper objectMapper = new ObjectMapper();
+					String successJson = objectMapper.writeValueAsString(successResponse);
+
+					return ResponseEntity.ok(successJson);
+				}
+				catch(Exception e){
+					return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al modificar equipo Pokemon");
+				}
 			}else{
 				equiposRepository.guardarEquipoPokemon(
 						(Integer) equipo.get("user_id"),
