@@ -25,7 +25,7 @@ import com.example.API_POKEMON_CRUD.Servicios.user_method;
 @Slf4j
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = {"http://localhost:4200/", "https://pokecollector-p0ke.web.app"})
+@CrossOrigin(origins = {"http://localhost:4200/", "https://pokecollector-p0ke.web.app/"})
 public class restcontrollerapi {
 
 	@Autowired
