@@ -78,3 +78,7 @@ INSERT INTO user_pokemon_caught (pokemon_id, user_pokemon_id) VALUES (138, 6);
 INSERT INTO user_pokemon_caught (pokemon_id, user_pokemon_id) VALUES (94, 2);
 
 INSERT INTO user_pokemon_caught (pokemon_id, user_pokemon_id) VALUES (108, 1);
+
+INSERT INTO user_pokemon_caught (pokemon_id, user_pokemon_id) VALUES (49, 1);
+
+INSERT INTO user_pokemon_caught (pokemon_id, user_pokemon_id) VALUES (19, 1);
